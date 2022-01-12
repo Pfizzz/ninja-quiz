@@ -17,9 +17,19 @@ form.addEventListener('submit', e => {
 
     // show result on page
 
-    // console.log(score);
-    // result.setAttribute('class', 'd-block');
-    // select the pan element using querySelector()
-    result.querySelector('span').textContent = `${score}%`;
+    scrollTo(0,0);
+    // select the span element using querySelector()
+
     result.classList.remove('d-none');
+
+    let output = 0;
+    const timer = setInterval(() => {
+        result.querySelector('span').textContent = `${output}%`;
+        if(output === score){
+            clearInterval(timer);
+        } else {
+            output++;
+        }
+    }, 10)
 });
+
